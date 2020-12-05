@@ -10,9 +10,10 @@ use App\Http\Requests\MassDestroyCrmCustomerRequest;
 use App\Http\Requests\StoreCrmCustomerRequest;
 use App\Http\Requests\UpdateCrmCustomerRequest;
 use App\JobType;
+use App\User;
 use App\LeadSource;
 use App\MarketSegment;
-use Gate;
+use Illuminate\Support\Facades\Gate;
 use Illuminate\Http\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Yajra\DataTables\Facades\DataTables;
@@ -124,6 +125,10 @@ class CrmCustomerController extends Controller
     {
         abort_if(Gate::denies('crm_customer_create'), Response::HTTP_FORBIDDEN, '403 Forbidden');
 
+		$users = User::all()->pluck('name', 'id')->prepend(trans('global.pleaseSelect'), '');
+
+		$job_types = JobType::all()->pluck('title', 'id')->prepend(trans('global.pleaseSelect'), '');
+ 
         $lead_sources = LeadSource::all()->pluck('title', 'id')->prepend(trans('global.pleaseSelect'), '');
 
         $market_segments = MarketSegment::all()->pluck('title', 'id')->prepend(trans('global.pleaseSelect'), '');
@@ -132,7 +137,7 @@ class CrmCustomerController extends Controller
 
         $statuses = CrmStatus::all()->pluck('name', 'id')->prepend(trans('global.pleaseSelect'), '');
 
-        return view('admin.crmCustomers.create', compact('lead_sources', 'market_segments', 'job_types', 'statuses'));
+        return view('admin.crmCustomers.create', compact('lead_sources', 'market_segments', 'job_types', 'statuses', 'users'));
     }
 
     public function store(StoreCrmCustomerRequest $request)
