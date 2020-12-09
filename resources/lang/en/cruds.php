@@ -1,11 +1,11 @@
 <?php
 
 return [
-    'userManagement' => [
+    'userManagement'       => [
         'title'          => 'User management',
         'title_singular' => 'User management',
     ],
-    'permission'     => [
+    'permission'           => [
         'title'          => 'Permissions',
         'title_singular' => 'Permission',
         'fields'         => [
@@ -21,7 +21,7 @@ return [
             'deleted_at_helper' => ' ',
         ],
     ],
-    'role'           => [
+    'role'                 => [
         'title'          => 'Roles',
         'title_singular' => 'Role',
         'fields'         => [
@@ -39,7 +39,7 @@ return [
             'deleted_at_helper'  => ' ',
         ],
     ],
-    'user'           => [
+    'user'                 => [
         'title'          => 'Users',
         'title_singular' => 'User',
         'fields'         => [
@@ -65,11 +65,11 @@ return [
             'deleted_at_helper'        => ' ',
         ],
     ],
-    'basicCRM'       => [
+    'basicCRM'             => [
         'title'          => 'CRM',
         'title_singular' => 'CRM',
     ],
-    'crmStatus'      => [
+    'crmStatus'            => [
         'title'          => 'Statuses',
         'title_singular' => 'Status',
         'fields'         => [
@@ -85,7 +85,7 @@ return [
             'deleted_at_helper' => ' ',
         ],
     ],
-    'crmCustomer'    => [
+    'crmCustomer'          => [
         'title'          => 'Customers',
         'title_singular' => 'Customer',
         'fields'         => [
@@ -117,8 +117,6 @@ return [
             'vehicle_reg_helper'      => ' ',
             'job_type'                => 'Job Type',
             'job_type_helper'         => ' ',
-            'job_type2'               => 'Job Type 2',
-            'job_type2_helper'        => ' ',
             'title'                   => 'Title',
             'title_helper'            => ' ',
             'vehicle_make'            => 'Vehicle Make',
@@ -161,7 +159,7 @@ return [
             'job_notes_helper'        => ' ',
         ],
     ],
-    'crmNote'        => [
+    'crmNote'              => [
         'title'          => 'Notes',
         'title_singular' => 'Note',
         'fields'         => [
@@ -179,7 +177,7 @@ return [
             'deleted_at_helper' => ' ',
         ],
     ],
-    'crmDocument'    => [
+    'crmDocument'          => [
         'title'          => 'Documents',
         'title_singular' => 'Document',
         'fields'         => [
@@ -201,7 +199,7 @@ return [
             'deleted_at_helper'    => ' ',
         ],
     ],
-    'leadSource'     => [
+    'leadSource'           => [
         'title'          => 'Lead Sources',
         'title_singular' => 'Lead Source',
         'fields'         => [
@@ -217,7 +215,7 @@ return [
             'deleted_at_helper' => ' ',
         ],
     ],
-    'marketSegment'  => [
+    'marketSegment'        => [
         'title'          => 'Market Segments',
         'title_singular' => 'Market Segment',
         'fields'         => [
@@ -235,11 +233,11 @@ return [
             'deleted_at_helper'  => ' ',
         ],
     ],
-    'crmField'       => [
+    'crmField'             => [
         'title'          => 'CRM Fields',
         'title_singular' => 'CRM Field',
     ],
-    'jobType'        => [
+    'jobType'              => [
         'title'          => 'Job Types',
         'title_singular' => 'Job Type',
         'fields'         => [
@@ -259,7 +257,7 @@ return [
             'category_number_helper' => ' ',
         ],
     ],
-    'auditLog'       => [
+    'auditLog'             => [
         'title'          => 'Audit Logs',
         'title_singular' => 'Audit Log',
         'fields'         => [
@@ -281,6 +279,24 @@ return [
             'created_at_helper'   => ' ',
             'updated_at'          => 'Updated at',
             'updated_at_helper'   => ' ',
+        ],
+    ],
+    'customerStatusChange' => [
+        'title'          => 'Customer Status Changes',
+        'title_singular' => 'Customer Status Change',
+        'fields'         => [
+            'id'                => 'ID',
+            'id_helper'         => ' ',
+            'old_status'        => 'Old Status',
+            'old_status_helper' => ' ',
+            'new_status'        => 'New Status',
+            'new_status_helper' => ' ',
+            'created_at'        => 'Created at',
+            'created_at_helper' => ' ',
+            'updated_at'        => 'Updated at',
+            'updated_at_helper' => ' ',
+            'deleted_at'        => 'Deleted at',
+            'deleted_at_helper' => ' ',
         ],
     ],
 ];

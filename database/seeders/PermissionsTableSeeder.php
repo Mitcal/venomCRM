@@ -232,6 +232,26 @@ class PermissionsTableSeeder extends Seeder
             ],
             [
                 'id'    => 56,
+                'title' => 'customer_status_change_create',
+            ],
+            [
+                'id'    => 57,
+                'title' => 'customer_status_change_edit',
+            ],
+            [
+                'id'    => 58,
+                'title' => 'customer_status_change_show',
+            ],
+            [
+                'id'    => 59,
+                'title' => 'customer_status_change_delete',
+            ],
+            [
+                'id'    => 60,
+                'title' => 'customer_status_change_access',
+            ],
+            [
+                'id'    => 61,
                 'title' => 'profile_password_edit',
             ],
         ];
