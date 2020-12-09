@@ -31,4 +31,7 @@ Route::group(['prefix' => 'v1', 'as' => 'api.', 'namespace' => 'Api\V1\Admin', '
 
     // Job Types
     Route::apiResource('job-types', 'JobTypeApiController');
+
+    // Customer Status Changes
+    Route::apiResource('customer-status-changes', 'CustomerStatusChangesApiController');
 });

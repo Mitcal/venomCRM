@@ -59,6 +59,10 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.', 'namespace' => 'Admin', 'mi
 
     // Audit Logs
     Route::resource('audit-logs', 'AuditLogsController', ['except' => ['create', 'store', 'edit', 'update', 'destroy']]);
+
+    // Customer Status Changes
+    Route::delete('customer-status-changes/destroy', 'CustomerStatusChangesController@massDestroy')->name('customer-status-changes.massDestroy');
+    Route::resource('customer-status-changes', 'CustomerStatusChangesController');
 });
 Route::group(['prefix' => 'profile', 'as' => 'profile.', 'namespace' => 'Auth', 'middleware' => ['auth']], function () {
 // Change password

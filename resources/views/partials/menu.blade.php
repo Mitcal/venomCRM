@@ -68,7 +68,7 @@
             </li>
         @endcan
         @can('basic_c_r_m_access')
-            <li class="c-sidebar-nav-dropdown {{ request()->is("admin/crm-customers*") ? "c-show" : "" }} {{ request()->is("admin/crm-notes*") ? "c-show" : "" }} {{ request()->is("admin/crm-documents*") ? "c-show" : "" }}">
+            <li class="c-sidebar-nav-dropdown {{ request()->is("admin/crm-customers*") ? "c-show" : "" }} {{ request()->is("admin/crm-notes*") ? "c-show" : "" }} {{ request()->is("admin/crm-documents*") ? "c-show" : "" }} {{ request()->is("admin/customer-status-changes*") ? "c-show" : "" }}">
                 <a class="c-sidebar-nav-dropdown-toggle" href="#">
                     <i class="fa-fw fas fa-briefcase c-sidebar-nav-icon">
 
@@ -103,6 +103,16 @@
 
                                 </i>
                                 {{ trans('cruds.crmDocument.title') }}
+                            </a>
+                        </li>
+                    @endcan
+                    @can('customer_status_change_access')
+                        <li class="c-sidebar-nav-item">
+                            <a href="{{ route("admin.customer-status-changes.index") }}" class="c-sidebar-nav-link {{ request()->is("admin/customer-status-changes") || request()->is("admin/customer-status-changes/*") ? "c-active" : "" }}">
+                                <i class="fa-fw fas fa-cogs c-sidebar-nav-icon">
+
+                                </i>
+                                {{ trans('cruds.customerStatusChange.title') }}
                             </a>
                         </li>
                     @endcan
