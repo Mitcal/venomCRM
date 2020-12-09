@@ -126,18 +126,18 @@ class CrmCustomerController extends Controller
         abort_if(Gate::denies('crm_customer_create'), Response::HTTP_FORBIDDEN, '403 Forbidden');
 
 		$users = User::all()->pluck('name', 'id')->prepend(trans('global.pleaseSelect'), '');
-
-		$job_types = JobType::all()->pluck('title', 'id')->prepend(trans('global.pleaseSelect'), '');
  
         $lead_sources = LeadSource::all()->pluck('title', 'id')->prepend(trans('global.pleaseSelect'), '');
 
         $market_segments = MarketSegment::all()->pluck('title', 'id')->prepend(trans('global.pleaseSelect'), '');
 
-        $job_types = JobType::all()->pluck('title', 'id')->prepend(trans('global.pleaseSelect'), '');
+        $job_types = JobType::where('category_number', 1)->pluck('title', 'id')->prepend(trans('global.pleaseSelect'), '');
+        
+        $job_types2 = JobType::where('category_number', 2)->pluck('title', 'id')->prepend(trans('global.pleaseSelect'), '');
 
         $statuses = CrmStatus::all()->pluck('name', 'id')->prepend(trans('global.pleaseSelect'), '');
 
-        return view('admin.crmCustomers.create', compact('lead_sources', 'market_segments', 'job_types', 'statuses', 'users'));
+        return view('admin.crmCustomers.create', compact('lead_sources', 'market_segments', 'job_types', 'job_types2', 'statuses', 'users'));
     }
 
     public function store(StoreCrmCustomerRequest $request)

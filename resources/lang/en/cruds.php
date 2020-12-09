@@ -117,6 +117,8 @@ return [
             'vehicle_reg_helper'      => ' ',
             'job_type'                => 'Job Type',
             'job_type_helper'         => ' ',
+            'job_type2'               => 'Job Type 2',
+            'job_type2_helper'        => ' ',
             'title'                   => 'Title',
             'title_helper'            => ' ',
             'vehicle_make'            => 'Vehicle Make',

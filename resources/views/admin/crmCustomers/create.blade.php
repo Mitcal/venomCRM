@@ -352,7 +352,7 @@
 
 										<label>Vehicle Age</label>
 
-											<input type="text" class="form-control addRequiredClass" name="vehicle_age" id="vehicle_age" placeholder="*Age*" required>
+											<input type="text" class="form-control addRequiredClass" name="vehicle_age" id="vehicle_age" placeholder="*Age*" >
 
 										</div>
 
@@ -364,7 +364,7 @@
 
 										<label>Vehicle Colour</label>
 
-											<input type="text" class="form-control addRequiredClass" name="vehicle_colour" id="vehicle_colour" placeholder="*Colour*" required>
+											<input type="text" class="form-control addRequiredClass" name="vehicle_colour" id="vehicle_colour" placeholder="*Colour*" >
 
 										</div>
 
@@ -374,25 +374,6 @@
 
 								
 							</fieldset>
-							
-
-							
-
-							<div class="row">
-
-								<div class="col-md-3 col-sm-6">
-
-								<button class="btn btn-danger" type="submit">
-										{{ trans('global.save') }}
-								</button>
-									
-
-								</div>
-
-								 
-
-							</div>
-
 
 
 							<div class="form-group">
@@ -422,6 +403,20 @@
 									</div>
 								@endif
 								<span class="help-block">{{ trans('cruds.crmCustomer.fields.job_type_helper') }}</span>
+							</div>
+							<div class="form-group">
+								<label for="job_type2_id">{{ trans('cruds.crmCustomer.fields.job_type2') }}</label>
+								<select class="form-control select2 {{ $errors->has('job_type2') ? 'is-invalid' : '' }}" name="job_type2_id" id="job_type2_id">
+									@foreach($job_types2 as $id => $job_type2)
+										<option value="{{ $id }}" {{ old('job_type2_id') == $id ? 'selected' : '' }}>{{ $job_type2 }}</option>
+									@endforeach
+								</select>
+								@if($errors->has('job_type2'))
+									<div class="invalid-feedback">
+										{{ $errors->first('job_type2') }}
+									</div>
+								@endif
+								<span class="help-block">{{ trans('cruds.crmCustomer.fields.job_type2_helper') }}</span>
 							</div>
 							<div class="form-group">
 								<label for="price">{{ trans('cruds.crmCustomer.fields.price') }}</label>
@@ -459,6 +454,15 @@
 							</div>
 
 							
+							<div class="row">
+
+								<div class="col-md-3 col-sm-6">
+
+								<button class="btn btn-danger" type="submit">
+										{{ trans('global.save') }}
+								</button>
+								</div>
+							</div>
 
 
 						</form>
