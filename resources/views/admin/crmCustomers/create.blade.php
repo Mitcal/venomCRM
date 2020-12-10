@@ -9,332 +9,422 @@
     <div class="card-body">
         <form method="POST" action="{{ route("admin.crm-customers.store") }}" enctype="multipart/form-data">
             @csrf
-            <div class="form-group">
-                <label class="required" for="date_time">{{ trans('cruds.crmCustomer.fields.date_time') }}</label>
-                <input class="form-control datetime {{ $errors->has('date_time') ? 'is-invalid' : '' }}" type="text" name="date_time" id="date_time" value="{{ old('date_time') }}" required>
-                @if($errors->has('date_time'))
-                    <div class="invalid-feedback">
-                        {{ $errors->first('date_time') }}
-                    </div>
-                @endif
-                <span class="help-block">{{ trans('cruds.crmCustomer.fields.date_time_helper') }}</span>
-            </div>
-            <div class="form-group">
-                <label class="required" for="salesperson">{{ trans('cruds.crmCustomer.fields.salesperson') }}</label>
-                <input class="form-control {{ $errors->has('salesperson') ? 'is-invalid' : '' }}" type="text" name="salesperson" id="salesperson" value="{{ old('salesperson', '') }}" required>
-                @if($errors->has('salesperson'))
-                    <div class="invalid-feedback">
-                        {{ $errors->first('salesperson') }}
-                    </div>
-                @endif
-                <span class="help-block">{{ trans('cruds.crmCustomer.fields.salesperson_helper') }}</span>
-            </div>
-            <div class="form-group">
-                <label>{{ trans('cruds.crmCustomer.fields.title') }}</label>
-                <select class="form-control {{ $errors->has('title') ? 'is-invalid' : '' }}" name="title" id="title">
-                    <option value disabled {{ old('title', null) === null ? 'selected' : '' }}>{{ trans('global.pleaseSelect') }}</option>
-                    @foreach(App\CrmCustomer::TITLE_SELECT as $key => $label)
-                        <option value="{{ $key }}" {{ old('title', '') === (string) $key ? 'selected' : '' }}>{{ $label }}</option>
-                    @endforeach
-                </select>
-                @if($errors->has('title'))
-                    <div class="invalid-feedback">
-                        {{ $errors->first('title') }}
-                    </div>
-                @endif
-                <span class="help-block">{{ trans('cruds.crmCustomer.fields.title_helper') }}</span>
-            </div>
-            <div class="form-group">
-                <label class="required" for="first_name">{{ trans('cruds.crmCustomer.fields.first_name') }}</label>
-                <input class="form-control {{ $errors->has('first_name') ? 'is-invalid' : '' }}" type="text" name="first_name" id="first_name" value="{{ old('first_name', '') }}" required>
-                @if($errors->has('first_name'))
-                    <div class="invalid-feedback">
-                        {{ $errors->first('first_name') }}
-                    </div>
-                @endif
-                <span class="help-block">{{ trans('cruds.crmCustomer.fields.first_name_helper') }}</span>
-            </div>
-            <div class="form-group">
-                <label for="last_name">{{ trans('cruds.crmCustomer.fields.last_name') }}</label>
-                <input class="form-control {{ $errors->has('last_name') ? 'is-invalid' : '' }}" type="text" name="last_name" id="last_name" value="{{ old('last_name', '') }}">
-                @if($errors->has('last_name'))
-                    <div class="invalid-feedback">
-                        {{ $errors->first('last_name') }}
-                    </div>
-                @endif
-                <span class="help-block">{{ trans('cruds.crmCustomer.fields.last_name_helper') }}</span>
-            </div>
-            <div class="form-group">
-                <label for="phone">{{ trans('cruds.crmCustomer.fields.phone') }}</label>
-                <input class="form-control {{ $errors->has('phone') ? 'is-invalid' : '' }}" type="text" name="phone" id="phone" value="{{ old('phone', '') }}">
-                @if($errors->has('phone'))
-                    <div class="invalid-feedback">
-                        {{ $errors->first('phone') }}
-                    </div>
-                @endif
-                <span class="help-block">{{ trans('cruds.crmCustomer.fields.phone_helper') }}</span>
-            </div>
-            <div class="form-group">
-                <label for="email">{{ trans('cruds.crmCustomer.fields.email') }}</label>
-                <input class="form-control {{ $errors->has('email') ? 'is-invalid' : '' }}" type="text" name="email" id="email" value="{{ old('email', '') }}">
-                @if($errors->has('email'))
-                    <div class="invalid-feedback">
-                        {{ $errors->first('email') }}
-                    </div>
-                @endif
-                <span class="help-block">{{ trans('cruds.crmCustomer.fields.email_helper') }}</span>
-            </div>
-            <div class="form-group">
-                <label for="address">{{ trans('cruds.crmCustomer.fields.address') }}</label>
-                <input class="form-control {{ $errors->has('address') ? 'is-invalid' : '' }}" type="text" name="address" id="address" value="{{ old('address', '') }}">
-                @if($errors->has('address'))
-                    <div class="invalid-feedback">
-                        {{ $errors->first('address') }}
-                    </div>
-                @endif
-                <span class="help-block">{{ trans('cruds.crmCustomer.fields.address_helper') }}</span>
-            </div>
-            <div class="form-group">
-                <label for="address_2">{{ trans('cruds.crmCustomer.fields.address_2') }}</label>
-                <input class="form-control {{ $errors->has('address_2') ? 'is-invalid' : '' }}" type="text" name="address_2" id="address_2" value="{{ old('address_2', '') }}">
-                @if($errors->has('address_2'))
-                    <div class="invalid-feedback">
-                        {{ $errors->first('address_2') }}
-                    </div>
-                @endif
-                <span class="help-block">{{ trans('cruds.crmCustomer.fields.address_2_helper') }}</span>
-            </div>
-            <div class="form-group">
-                <label for="address_3">{{ trans('cruds.crmCustomer.fields.address_3') }}</label>
-                <input class="form-control {{ $errors->has('address_3') ? 'is-invalid' : '' }}" type="text" name="address_3" id="address_3" value="{{ old('address_3', '') }}">
-                @if($errors->has('address_3'))
-                    <div class="invalid-feedback">
-                        {{ $errors->first('address_3') }}
-                    </div>
-                @endif
-                <span class="help-block">{{ trans('cruds.crmCustomer.fields.address_3_helper') }}</span>
-            </div>
-            <div class="form-group">
-                <label for="address_town">{{ trans('cruds.crmCustomer.fields.address_town') }}</label>
-                <input class="form-control {{ $errors->has('address_town') ? 'is-invalid' : '' }}" type="text" name="address_town" id="address_town" value="{{ old('address_town', '') }}">
-                @if($errors->has('address_town'))
-                    <div class="invalid-feedback">
-                        {{ $errors->first('address_town') }}
-                    </div>
-                @endif
-                <span class="help-block">{{ trans('cruds.crmCustomer.fields.address_town_helper') }}</span>
-            </div>
-            <div class="form-group">
-                <label class="required" for="address_city">{{ trans('cruds.crmCustomer.fields.address_city') }}</label>
-                <input class="form-control {{ $errors->has('address_city') ? 'is-invalid' : '' }}" type="text" name="address_city" id="address_city" value="{{ old('address_city', '') }}" required>
-                @if($errors->has('address_city'))
-                    <div class="invalid-feedback">
-                        {{ $errors->first('address_city') }}
-                    </div>
-                @endif
-                <span class="help-block">{{ trans('cruds.crmCustomer.fields.address_city_helper') }}</span>
-            </div>
-            <div class="form-group">
-                <label for="address_county">{{ trans('cruds.crmCustomer.fields.address_county') }}</label>
-                <input class="form-control {{ $errors->has('address_county') ? 'is-invalid' : '' }}" type="text" name="address_county" id="address_county" value="{{ old('address_county', '') }}">
-                @if($errors->has('address_county'))
-                    <div class="invalid-feedback">
-                        {{ $errors->first('address_county') }}
-                    </div>
-                @endif
-                <span class="help-block">{{ trans('cruds.crmCustomer.fields.address_county_helper') }}</span>
-            </div>
-            <div class="form-group">
-                <label for="address_postcode">{{ trans('cruds.crmCustomer.fields.address_postcode') }}</label>
-                <input class="form-control {{ $errors->has('address_postcode') ? 'is-invalid' : '' }}" type="text" name="address_postcode" id="address_postcode" value="{{ old('address_postcode', '') }}">
-                @if($errors->has('address_postcode'))
-                    <div class="invalid-feedback">
-                        {{ $errors->first('address_postcode') }}
-                    </div>
-                @endif
-                <span class="help-block">{{ trans('cruds.crmCustomer.fields.address_postcode_helper') }}</span>
-            </div>
-            <div class="form-group">
-                <label for="address_country">{{ trans('cruds.crmCustomer.fields.address_country') }}</label>
-                <input class="form-control {{ $errors->has('address_country') ? 'is-invalid' : '' }}" type="text" name="address_country" id="address_country" value="{{ old('address_country', '') }}">
-                @if($errors->has('address_country'))
-                    <div class="invalid-feedback">
-                        {{ $errors->first('address_country') }}
-                    </div>
-                @endif
-                <span class="help-block">{{ trans('cruds.crmCustomer.fields.address_country_helper') }}</span>
-            </div>
-            <div class="form-group">
-                <label for="instagram">{{ trans('cruds.crmCustomer.fields.instagram') }}</label>
-                <input class="form-control {{ $errors->has('instagram') ? 'is-invalid' : '' }}" type="text" name="instagram" id="instagram" value="{{ old('instagram', '') }}">
-                @if($errors->has('instagram'))
-                    <div class="invalid-feedback">
-                        {{ $errors->first('instagram') }}
-                    </div>
-                @endif
-                <span class="help-block">{{ trans('cruds.crmCustomer.fields.instagram_helper') }}</span>
-            </div>
-            <div class="form-group">
-                <label for="facebook">{{ trans('cruds.crmCustomer.fields.facebook') }}</label>
-                <input class="form-control {{ $errors->has('facebook') ? 'is-invalid' : '' }}" type="text" name="facebook" id="facebook" value="{{ old('facebook', '') }}">
-                @if($errors->has('facebook'))
-                    <div class="invalid-feedback">
-                        {{ $errors->first('facebook') }}
-                    </div>
-                @endif
-                <span class="help-block">{{ trans('cruds.crmCustomer.fields.facebook_helper') }}</span>
-            </div>
-            <div class="form-group">
-                <label for="social_other">{{ trans('cruds.crmCustomer.fields.social_other') }}</label>
-                <input class="form-control {{ $errors->has('social_other') ? 'is-invalid' : '' }}" type="text" name="social_other" id="social_other" value="{{ old('social_other', '') }}">
-                @if($errors->has('social_other'))
-                    <div class="invalid-feedback">
-                        {{ $errors->first('social_other') }}
-                    </div>
-                @endif
-                <span class="help-block">{{ trans('cruds.crmCustomer.fields.social_other_helper') }}</span>
-            </div>
-            <div class="form-group">
-                <label for="lead_source_id">{{ trans('cruds.crmCustomer.fields.lead_source') }}</label>
-                <select class="form-control select2 {{ $errors->has('lead_source') ? 'is-invalid' : '' }}" name="lead_source_id" id="lead_source_id">
-                    @foreach($lead_sources as $id => $lead_source)
-                        <option value="{{ $id }}" {{ old('lead_source_id') == $id ? 'selected' : '' }}>{{ $lead_source }}</option>
-                    @endforeach
-                </select>
-                @if($errors->has('lead_source'))
-                    <div class="invalid-feedback">
-                        {{ $errors->first('lead_source') }}
-                    </div>
-                @endif
-                <span class="help-block">{{ trans('cruds.crmCustomer.fields.lead_source_helper') }}</span>
-            </div>
-            <div class="form-group">
-                <label for="vehicle_reg">{{ trans('cruds.crmCustomer.fields.vehicle_reg') }}</label>
-                <input class="form-control {{ $errors->has('vehicle_reg') ? 'is-invalid' : '' }}" type="text" name="vehicle_reg" id="vehicle_reg" value="{{ old('vehicle_reg', '') }}">
-                @if($errors->has('vehicle_reg'))
-                    <div class="invalid-feedback">
-                        {{ $errors->first('vehicle_reg') }}
-                    </div>
-                @endif
-                <span class="help-block">{{ trans('cruds.crmCustomer.fields.vehicle_reg_helper') }}</span>
-            </div>
-            <div class="form-group">
-                <label for="vehicle_make">{{ trans('cruds.crmCustomer.fields.vehicle_make') }}</label>
-                <input class="form-control {{ $errors->has('vehicle_make') ? 'is-invalid' : '' }}" type="text" name="vehicle_make" id="vehicle_make" value="{{ old('vehicle_make', '') }}">
-                @if($errors->has('vehicle_make'))
-                    <div class="invalid-feedback">
-                        {{ $errors->first('vehicle_make') }}
-                    </div>
-                @endif
-                <span class="help-block">{{ trans('cruds.crmCustomer.fields.vehicle_make_helper') }}</span>
-            </div>
-            <div class="form-group">
-                <label for="description">{{ trans('cruds.crmCustomer.fields.description') }}</label>
-                <textarea class="form-control {{ $errors->has('description') ? 'is-invalid' : '' }}" name="description" id="description">{{ old('description') }}</textarea>
-                @if($errors->has('description'))
-                    <div class="invalid-feedback">
-                        {{ $errors->first('description') }}
-                    </div>
-                @endif
-                <span class="help-block">{{ trans('cruds.crmCustomer.fields.description_helper') }}</span>
-            </div>
-            <div class="form-group">
-                <label for="vehicle_model">{{ trans('cruds.crmCustomer.fields.vehicle_model') }}</label>
-                <input class="form-control {{ $errors->has('vehicle_model') ? 'is-invalid' : '' }}" type="text" name="vehicle_model" id="vehicle_model" value="{{ old('vehicle_model', '') }}">
-                @if($errors->has('vehicle_model'))
-                    <div class="invalid-feedback">
-                        {{ $errors->first('vehicle_model') }}
-                    </div>
-                @endif
-                <span class="help-block">{{ trans('cruds.crmCustomer.fields.vehicle_model_helper') }}</span>
-            </div>
-            <div class="form-group">
-                <label for="vehicle_age">{{ trans('cruds.crmCustomer.fields.vehicle_age') }}</label>
-                <input class="form-control {{ $errors->has('vehicle_age') ? 'is-invalid' : '' }}" type="text" name="vehicle_age" id="vehicle_age" value="{{ old('vehicle_age', '') }}">
-                @if($errors->has('vehicle_age'))
-                    <div class="invalid-feedback">
-                        {{ $errors->first('vehicle_age') }}
-                    </div>
-                @endif
-                <span class="help-block">{{ trans('cruds.crmCustomer.fields.vehicle_age_helper') }}</span>
-            </div>
-            <div class="form-group">
-                <label for="vehicle_colour">{{ trans('cruds.crmCustomer.fields.vehicle_colour') }}</label>
-                <input class="form-control {{ $errors->has('vehicle_colour') ? 'is-invalid' : '' }}" type="text" name="vehicle_colour" id="vehicle_colour" value="{{ old('vehicle_colour', '') }}">
-                @if($errors->has('vehicle_colour'))
-                    <div class="invalid-feedback">
-                        {{ $errors->first('vehicle_colour') }}
-                    </div>
-                @endif
-                <span class="help-block">{{ trans('cruds.crmCustomer.fields.vehicle_colour_helper') }}</span>
-            </div>
-            <div class="form-group">
-                <label for="market_segment_id">{{ trans('cruds.crmCustomer.fields.market_segment') }}</label>
-                <select class="form-control select2 {{ $errors->has('market_segment') ? 'is-invalid' : '' }}" name="market_segment_id" id="market_segment_id">
-                    @foreach($market_segments as $id => $market_segment)
-                        <option value="{{ $id }}" {{ old('market_segment_id') == $id ? 'selected' : '' }}>{{ $market_segment }}</option>
-                    @endforeach
-                </select>
-                @if($errors->has('market_segment'))
-                    <div class="invalid-feedback">
-                        {{ $errors->first('market_segment') }}
-                    </div>
-                @endif
-                <span class="help-block">{{ trans('cruds.crmCustomer.fields.market_segment_helper') }}</span>
-            </div>
-            <div class="form-group">
-                <label class="required" for="job_type_id">{{ trans('cruds.crmCustomer.fields.job_type') }}</label>
-                <select class="form-control select2 {{ $errors->has('job_type') ? 'is-invalid' : '' }}" name="job_type_id" id="job_type_id" required>
-                    @foreach($job_types as $id => $job_type)
-                        <option value="{{ $id }}" {{ old('job_type_id') == $id ? 'selected' : '' }}>{{ $job_type }}</option>
-                    @endforeach
-                </select>
-                @if($errors->has('job_type'))
-                    <div class="invalid-feedback">
-                        {{ $errors->first('job_type') }}
-                    </div>
-                @endif
-                <span class="help-block">{{ trans('cruds.crmCustomer.fields.job_type_helper') }}</span>
-            </div>
-            <div class="form-group">
-                <label for="price">{{ trans('cruds.crmCustomer.fields.price') }}</label>
-                <input class="form-control {{ $errors->has('price') ? 'is-invalid' : '' }}" type="number" name="price" id="price" value="{{ old('price', '') }}" step="0.01">
-                @if($errors->has('price'))
-                    <div class="invalid-feedback">
-                        {{ $errors->first('price') }}
-                    </div>
-                @endif
-                <span class="help-block">{{ trans('cruds.crmCustomer.fields.price_helper') }}</span>
-            </div>
-            <div class="form-group">
-                <label class="required" for="status_id">{{ trans('cruds.crmCustomer.fields.status') }}</label>
-                <select class="form-control select2 {{ $errors->has('status') ? 'is-invalid' : '' }}" name="status_id" id="status_id" required>
-                    @foreach($statuses as $id => $status)
-                        <option value="{{ $id }}" {{ old('status_id') == $id ? 'selected' : '' }}>{{ $status }}</option>
-                    @endforeach
-                </select>
-                @if($errors->has('status'))
-                    <div class="invalid-feedback">
-                        {{ $errors->first('status') }}
-                    </div>
-                @endif
-                <span class="help-block">{{ trans('cruds.crmCustomer.fields.status_helper') }}</span>
-            </div>
-            <div class="form-group">
-                <label for="job_notes">{{ trans('cruds.crmCustomer.fields.job_notes') }}</label>
-                <input class="form-control {{ $errors->has('job_notes') ? 'is-invalid' : '' }}" type="text" name="job_notes" id="job_notes" value="{{ old('job_notes', '') }}">
-                @if($errors->has('job_notes'))
-                    <div class="invalid-feedback">
-                        {{ $errors->first('job_notes') }}
-                    </div>
-                @endif
-                <span class="help-block">{{ trans('cruds.crmCustomer.fields.job_notes_helper') }}</span>
-            </div>
-            <div class="form-group">
-                <button class="btn btn-danger" type="submit">
-                    {{ trans('global.save') }}
-                </button>
-            </div>
+            <div class="row">
+
+				<div class="col-lg-8 col-md-8">
+
+					<div id="fillin">
+
+							<form method="POST" action="{{ route("admin.crm-customers.store") }}" enctype="multipart/form-data">
+							    @csrf
+								
+								<div class="row">
+
+									<div class="col-md-6">
+
+										<div class="form-group firstnameSection addReqClass">
+
+										<label>{{ trans('cruds.crmCustomer.fields.salesperson') }}</label>
+
+											 <select class="form-control {{ $errors->has('title') ? 'is-invalid' : '' }}" name="salesperson" id="salesperson" required>
+														 @foreach($users as $id => $user)
+															<option value="{{ $id }}" {{ Auth::id() == $id ? 'selected' : '' }}>{{ $user }}</option>
+														@endforeach
+											</select>
+
+										</div>
+
+									</div>
+									
+									<div class="col-md-6 salutSection addReqClass">
+
+											<label class="required" for="date_time">{{ trans('cruds.crmCustomer.fields.date_time') }}</label>
+											<input class="form-control datetime {{ $errors->has('date_time') ? 'is-invalid' : '' }}" type="text" name="date_time" id="date_time" value="{{ old('date_time') }}" required>
+											<span class="help-block">{{ trans('cruds.crmCustomer.fields.date_time_helper') }}</span>
+
+									</div>
+
+									
+
+									 
+
+								</div>
+							<fieldset>
+								
+							<legend>Customer Details</legend>
+
+								<div class="row">
+
+									<div class="col-md-2 salutSection addReqClass">
+
+									<label>{{ trans('cruds.crmCustomer.fields.title') }}</label>
+
+										<select id="title" name="title"  class="form-control addRequiredClass" required>
+
+											<option value disabled {{ old('title', null) === null ? 'selected' : '' }}>{{ trans('global.pleaseSelect') }}</option>
+											@foreach(App\CrmCustomer::TITLE_SELECT as $key => $label)
+												<option value="{{ $key }}" {{ old('title', '') === (string) $key ? 'selected' : '' }}>{{ $label }}</option>
+											@endforeach
+
+										</select><br>
+
+									</div>
+
+									<div class="col-md-5">
+
+										<div class="form-group firstnameSection addReqClass">
+
+										<label>{{ trans('cruds.crmCustomer.fields.first_name') }}</label>
+
+											<input type="text" pattern="[a-zA-Z0-9 \x27\x2d]+" class="form-control addRequiredClass" name="first_name" id="first_name" placeholder="*Firstname*" required>
+
+										</div>
+
+									</div>
+
+									<div class="col-md-5">
+
+										<div class="form-group surnameSection addReqClass">
+
+										<label>{{ trans('cruds.crmCustomer.fields.last_name') }}</label>
+
+											<input type="text" pattern="[a-zA-Z0-9 \x27\x2d]+" class="form-control addRequiredClass" name="last_name" id="last_name" placeholder="*Surname*" required>
+
+										</div>
+
+									</div>
+
+								</div>
+
+								<div class="row">
+
+									<div class="col-sm-6">
+
+										<div class="form-group phoneSection addReqClass">
+
+										<label>{{ trans('cruds.crmCustomer.fields.phone') }}</label>
+
+											<input type="text" class="form-control addReqClass" name="phone" id="phone" placeholder="*Phone*" required>
+
+										</div>
+
+									</div>
+
+									<div class="col-sm-6">
+
+										<div class="form-group">
+
+										<label>{{ trans('cruds.crmCustomer.fields.email') }}</label>
+
+											<input type="email" class="form-control" name="email" id="email" placeholder="*Email*">
+
+										</div>
+
+									</div>
+
+								</div>	
+
+							</fieldset>
+
+							<fieldset>
+
+							<legend>Location</legend>
+
+								<div class="row">
+
+									<div class="col-md-6">
+
+										<div class="form-group">
+
+											<div id="postcode_lookup_field"></div>
+
+										</div>		
+
+									</div>	
+
+									<div class="col-md-6">
+
+										<div class="form-group">
+
+											<div id="lookup_field"></div>
+
+										</div>
+
+									</div>
+
+								</div>
+
+								<div class="row">
+
+									<div class="col-sm-3">
+
+										<div class="form-group">
+
+											<label>Postcode Search</label>
+
+											<input type="text" class="form-control" name="postcodesearch" id="postcodesearch" required>
+
+											
+
+										</div>	
+
+									</div>	
+
+									<div class="col-sm-3">
+
+										<button name="btnPostcodeSearch" id="btnPostcodeSearch" value="Search" onclick="return false;" class="btn btn-success btn-lg  btn-block">Search</button>
+
+									</div>	
+
+									
+
+									<div class="col-sm-6">
+
+										<div class="form-group">
+
+											<label>Select Address</label>
+
+											<select class="form-control" name="address" id="addressSelection" required>
+
+												<option> - Select - </option>
+
+											</select>
+
+											
+
+										</div>
+
+										<span id="mapsLink"></span>
+
+									</div>
+
+								</div>
+								
+								<div class="row">
+
+								
+
+									<div class="col-md-6">
+
+										<div class="form-group addReqClass">
+
+										<label>{{ trans('cruds.crmCustomer.fields.address_postcode') }}</label>
+
+											<input type="text" class="form-control" name="address_postcode" id="postcode" required>
+
+										</div>
+
+									</div>
+
+									<div class="col-md-6">
+
+										<div class="form-group addReqClass">
+												<label class="required" for="hsnum">House Number/Name</label>
+												<input class="form-control {{ $errors->has('hsnum') ? 'is-invalid' : '' }}" type="text" name="hsnum" id="hsnum" value="{{ old('hsnum', '') }}" required>
+
+										</div>
+
+									</div>
+
+								</div>	
+
+								<div class="row">
+
+								
+
+									<div class="col-md-6">
+
+										<div class="form-group addReqClass">
+
+										<label>Address Road</label>
+
+											<input type="text" class="form-control" name="road" id="road" required>
+
+										</div>
+
+									</div>
+
+
+									<div class="col-md-6">
+
+										<div class="form-group addReqClass">
+												 
+												<label>{{ trans('cruds.crmCustomer.fields.address_town') }}</label>
+
+												<input type="text" class="form-control" name="address_town" id="town" required>
+										</div>
+
+									</div>
+
+								</div>	
+
+								
+
+								<div class="form-group">
+
+								<label>{{ trans('cruds.crmCustomer.fields.address_country') }}</label>
+
+									<input type="text" class="form-control" name="address_country" id="address_country" >
+
+								</div>
+
+							
+
+							</fieldset>
+
+
+
+							<div class="form-group">
+								<label for="instagram">{{ trans('cruds.crmCustomer.fields.instagram') }}</label>
+								<input class="form-control {{ $errors->has('instagram') ? 'is-invalid' : '' }}" type="text" name="instagram" id="instagram" value="{{ old('instagram', '') }}">
+								@if($errors->has('instagram'))
+									<div class="invalid-feedback">
+										{{ $errors->first('instagram') }}
+									</div>
+								@endif
+								<span class="help-block">{{ trans('cruds.crmCustomer.fields.instagram_helper') }}</span>
+							</div>
+							<div class="form-group">
+								<label for="facebook">{{ trans('cruds.crmCustomer.fields.facebook') }}</label>
+								<input class="form-control {{ $errors->has('facebook') ? 'is-invalid' : '' }}" type="text" name="facebook" id="facebook" value="{{ old('facebook', '') }}">
+								@if($errors->has('facebook'))
+									<div class="invalid-feedback">
+										{{ $errors->first('facebook') }}
+									</div>
+								@endif
+								<span class="help-block">{{ trans('cruds.crmCustomer.fields.facebook_helper') }}</span>
+							</div>
+							<div class="form-group">
+								<label for="social_other">{{ trans('cruds.crmCustomer.fields.social_other') }}</label>
+								<input class="form-control {{ $errors->has('social_other') ? 'is-invalid' : '' }}" type="text" name="social_other" id="social_other" value="{{ old('social_other', '') }}">
+								@if($errors->has('social_other'))
+									<div class="invalid-feedback">
+										{{ $errors->first('social_other') }}
+									</div>
+								@endif
+								<span class="help-block">{{ trans('cruds.crmCustomer.fields.social_other_helper') }}</span>
+							</div>
+							 
+
+
+							<fieldset>
+
+							<legend>Vehicle</legend>
+
+							
+
+								<div class="row">
+
+									<div class="col-md-6">
+
+										<div class="form-group">
+
+										<label>Registration Search</label>
+
+											<input type="text" class="form-control" name="vehicle_reg" id="regSearch" placeholder="Reg Lookup" required>
+
+										</div>
+
+									</div>
+
+									<div class="col-md-6">
+
+										<button name="registrationSearch" id="registrationSearch" value="Search" onclick="return false;" class="btn btn-success btn-lg  btn-block">Search Registration</button>
+
+									</div>
+
+								</div>
+
+
+								<div class="row">
+
+									<div class="col-sm-3">
+
+										<div class="form-group addReqClass">
+
+										<label>{{ trans('cruds.crmCustomer.fields.vehicle_make') }}</label>
+
+											<input type="text" class="form-control addRequiredClass" name="vehicle_make" id="make" placeholder="*Make*" required>
+
+										</div>
+
+									</div>
+
+									<div class="col-sm-3">
+
+										<div class="form-group addReqClass">
+
+										<label>Vehicle Model</label>
+
+											<input type="text" class="form-control addRequiredClass" name="vehicle_model" id="model" placeholder="*Model*" required>
+
+										</div>
+
+									</div>
+									
+									<div class="col-sm-3">
+
+										<div class="form-group addReqClass">
+
+										<label>Vehicle Age</label>
+
+											<input type="text" class="form-control addRequiredClass" name="vehicle_age" id="vehicle_age" placeholder="*Age*" required>
+
+										</div>
+
+									</div>
+									
+									<div class="col-sm-3">
+
+										<div class="form-group addReqClass">
+
+										<label>Vehicle Colour</label>
+
+											<input type="text" class="form-control addRequiredClass" name="vehicle_colour" id="vehicleColour" placeholder="*Colour*" required>
+
+										</div>
+
+									</div>
+
+								</div>	
+
+								
+							</fieldset>
+							
+
+							
+
+							<div class="row">
+
+								<div class="col-md-3 col-sm-6">
+
+								<button class="btn btn-danger" type="submit">
+										{{ trans('global.save') }}
+								</button>
+									
+
+								</div>
+
+								 
+
+							</div>
+
+
+							
+
+
+						</form>
+
+						<br>
+
+						
+
+					</div><!--end fillin-->
+
+				</div>
+
+			</div>
+
         </form>
     </div>
 </div>
