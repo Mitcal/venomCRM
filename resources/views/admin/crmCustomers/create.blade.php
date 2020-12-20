@@ -391,8 +391,31 @@
 								
 							</fieldset>
 							
-
 							
+							<div class="row">
+
+								<div class="col-md-3 col-sm-6">
+
+									<div class="form-group">
+										<label class="required" for="status_id">{{ trans('cruds.crmCustomer.fields.status') }}</label>
+										<select class="form-control select2 {{ $errors->has('status') ? 'is-invalid' : '' }}" name="status_id" id="status_id" required>
+											@foreach($statuses as $id => $status)
+												<option value="{{ $id }}" {{ old('status_id') == $id ? 'selected' : '' }}>{{ $status }}</option>
+											@endforeach
+										</select>
+										@if($errors->has('status'))
+											<div class="invalid-feedback">
+												{{ $errors->first('status') }}
+											</div>
+										@endif
+										<span class="help-block">{{ trans('cruds.crmCustomer.fields.status_helper') }}</span>
+									</div>									
+
+								</div>
+
+								 
+
+							</div>
 
 							<div class="row">
 

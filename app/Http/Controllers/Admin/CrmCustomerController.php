@@ -10,6 +10,7 @@ use App\Http\Requests\MassDestroyCrmCustomerRequest;
 use App\Http\Requests\StoreCrmCustomerRequest;
 use App\Http\Requests\UpdateCrmCustomerRequest;
 use App\JobType;
+use App\User;
 use App\LeadSource;
 use App\MarketSegment;
 use Gate;
@@ -132,7 +133,9 @@ class CrmCustomerController extends Controller
 
         $statuses = CrmStatus::all()->pluck('name', 'id')->prepend(trans('global.pleaseSelect'), '');
 
-        return view('admin.crmCustomers.create', compact('lead_sources', 'market_segments', 'job_types', 'statuses'));
+	$users = User::all()->pluck('name', 'id')->prepend(trans('global.pleaseSelect'), '');
+
+        return view('admin.crmCustomers.create', compact('lead_sources', 'market_segments', 'job_types', 'statuses', 'users'));
     }
 
     public function store(StoreCrmCustomerRequest $request)
@@ -156,7 +159,9 @@ class CrmCustomerController extends Controller
 
         $crmCustomer->load('lead_source', 'market_segment', 'job_type', 'status');
 
-        return view('admin.crmCustomers.edit', compact('lead_sources', 'market_segments', 'job_types', 'statuses', 'crmCustomer'));
+	$users = User::all()->pluck('name', 'id')->prepend(trans('global.pleaseSelect'), '');
+
+        return view('admin.crmCustomers.edit', compact('lead_sources', 'market_segments', 'job_types', 'statuses', 'crmCustomer', 'users'));
     }
 
     public function update(UpdateCrmCustomerRequest $request, CrmCustomer $crmCustomer)
