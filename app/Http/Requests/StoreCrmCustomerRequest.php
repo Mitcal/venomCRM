@@ -57,10 +57,10 @@ class StoreCrmCustomerRequest extends FormRequest
                 'string',
                 'nullable',
             ],
-            'address_city'     => [
+            /*'address_city'     => [
                 'string',
                 'required',
-            ],
+            ],*/
             'address_county'   => [
                 'string',
                 'nullable',
@@ -107,14 +107,14 @@ class StoreCrmCustomerRequest extends FormRequest
                 'string',
                 'nullable',
             ],
-            'job_type_id'      => [
+            /*'job_type_id'      => [
                 'required',
                 'integer',
             ],
             'status_id'        => [
                 'required',
                 'integer',
-            ],
+            ],*/
             'job_notes'        => [
                 'string',
                 'nullable',
